@@ -1,4 +1,5 @@
 
+import com.datastax.driver.core.Cluster
 import com.smartstorm.Message
 import kafka.serializer.{DefaultDecoder, StringDecoder}
 import org.apache.spark.{SparkConf, rdd}
@@ -22,6 +23,12 @@ object StormDriver {
     val sparkConf = new SparkConf().setAppName("KafkaHBaseWordCount").setMaster("local")
     val ssc = new StreamingContext(sparkConf, Seconds(5))
 
+    val cluster = {
+      Cluster.builder()
+        .addContactPoint("localhost")
+        // .withCredentials("username", "password")
+        .build()
+    }
 
     val kafkaParams = Map[String, Object](
       "bootstrap.servers" -> "localhost:9092",

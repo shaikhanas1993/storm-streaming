@@ -32,7 +32,6 @@
             <version>1.2.17</version>
         </dependency>
 
-
         <!-- Spark Libraries -->
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -82,8 +81,12 @@
             <version>3.2.11</version>
         </dependency>
 
-
-
+        <!-- Cassandra -->
+        <dependency>
+            <groupId>com.datastax.cassandra</groupId>
+            <artifactId>cassandra-driver-core</artifactId>
+            <version>3.3.0</version>
+        </dependency>
 
     </dependencies>
 
