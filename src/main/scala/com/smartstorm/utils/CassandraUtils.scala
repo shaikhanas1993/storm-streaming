@@ -8,10 +8,6 @@ import com.datastax.driver.core.querybuilder.{Clause, QueryBuilder => QB}
 import com.smartstorm.Message
 import org.joda.time.{DateTime, DateTimeZone}
 
-case class Sensor(id: String,
-                  created: String,
-                  duration: Int
-                 )
 
 
 /**
