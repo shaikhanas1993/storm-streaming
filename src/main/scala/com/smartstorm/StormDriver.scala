@@ -20,15 +20,8 @@ object StormDriver {
 
   def main(args: Array[String]): Unit = {
 
-    val sparkConf = new SparkConf().setAppName("KafkaHBaseWordCount").setMaster("local")
+    val sparkConf = new SparkConf().setAppName("KafkaSparkStreamingJob").setMaster("local")
     val ssc = new StreamingContext(sparkConf, Seconds(5))
-
-    val cluster = {
-      Cluster.builder()
-        .addContactPoint("localhost")
-        // .withCredentials("username", "password")
-        .build()
-    }
 
     val kafkaParams = Map[String, Object](
       "bootstrap.servers" -> "localhost:9092",
@@ -60,7 +53,7 @@ object StormDriver {
           println("rekord " + record)
 
           val jsonObjs = parse(record.toString).extract[Message]
-          println("wartosc = " + jsonObjs.dataCollectionId)
+          println("wartosc = " + jsonObjs.desc)
 
         }
       )
