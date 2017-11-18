@@ -27,9 +27,9 @@ object CassandraUtils {
     val timestamp = format.format(Calendar.getInstance().getTime())
 
     val insertQuery = QB.insertInto(table)
-      .value("sensorid", message.sensor_id)
-      .value("userid",message.user_id)
-      .value("sensordesc", message.desc)
+      .value("sensorid", message.sensorId)
+      .value("userid",message.userId)
+      .value("sensordesc", "test desc")
       .value("value",message.value)
       .value("created", timestamp)
       .using(QB.ttl(86400))
