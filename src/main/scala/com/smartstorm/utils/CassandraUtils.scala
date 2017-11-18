@@ -32,7 +32,7 @@ object CassandraUtils {
       .value("sensordesc", message.desc)
       .value("value",message.value)
       .value("created", timestamp)
-      .using(QB.ttl(100))
+      .using(QB.ttl(86400))
 
     session.execute(insertQuery)
   }

@@ -1,3 +1,5 @@
+package com.smartstorm
+
 
 import com.datastax.driver.core.Cluster
 import com.smartstorm.Message
