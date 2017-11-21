@@ -1,0 +1,19 @@
+language: java
+
+addons:
+  ssh_known_hosts: alfa.smartstorm.io
+
+before_install:
+ - openssl aes-256-cbc -K $encrypted_1aabc5d298c9_key -iv $encrypted_1aabc5d298c9_iv -in deploy_rsa.enc -out deploy_rsa -d
+ - eval "$(ssh-agent -s)"
+ - chmod 600 deploy_rsa
+ - ssh-add deploy_rsa
+
+script: mvn clean install
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/* travis@alfa.smartstorm.io:/var/opt/storm-streaming/
+  on:
+    branch: develop
