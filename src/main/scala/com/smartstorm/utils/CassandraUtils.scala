@@ -6,7 +6,7 @@ import java.util.{Calendar, Date}
 import com.datastax.driver.core.{Cluster, ResultSet, Session}
 import com.datastax.driver.core.querybuilder.{Clause, QueryBuilder => QB}
 import com.smartstorm.Message
-import com.smartstorm.utils.CassandraConfig
+import com.smartstorm.Config
 import org.joda.time.{DateTime, DateTimeZone}
 
 
@@ -18,7 +18,7 @@ object CassandraUtils {
 
   val cluster = {
     Cluster.builder()
-      .addContactPoint(CassandraConfig.ContactPointAddress)
+      .addContactPoint(Config.ContactPointAddress)
       .build()
   }
 
