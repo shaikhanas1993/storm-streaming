@@ -34,7 +34,7 @@ object StormDriver {
     val ssc = new StreamingContext(sparkConf, Seconds(5))
 
     val kafkaParams = Map[String, Object](
-      "bootstrap.servers" -> "localhost:9092",
+      "bootstrap.servers" -> Config.KafkaConnection,
       "key.deserializer" -> classOf[StringDeserializer],
       "value.deserializer" -> classOf[StringDeserializer],
       "group.id" -> "stream_group",
